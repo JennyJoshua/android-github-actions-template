@@ -24,7 +24,7 @@ MAX_UNCOMPRESSED_BYTES = 100 * 1024 * 1024
 SCAN_BYTES = 1024 * 1024            # leading bytes of each file scanned for secrets
 MAX_PROBLEMS_REPORTED = 50
 
-ALLOWED_DIRS = {"docs", "examples", "scripts", "tests"}
+ALLOWED_DIRS = {"app", "docs", "examples", "gradle", "scripts", "tests"}
 ROOT_DOTFILES_ALLOWED = {".gitignore", ".gitattributes", ".env.example"}
 BLOCKED_COMPONENTS = {".git", ".github", "node_modules", ".next", "_inbox", "_failed"}
 PROTECTED_PATHS = {"scripts/process-zip-inbox.py"}   # a ZIP may not replace the extractor
