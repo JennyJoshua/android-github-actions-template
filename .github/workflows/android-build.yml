@@ -52,7 +52,17 @@ permissions:
   contents: read
 
 jobs:
+  wrapper-validation:
+    name: Validate Gradle wrapper integrity
+    runs-on: ubuntu-24.04
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+        with:
+          persist-credentials: false
+
   build:
+    needs: wrapper-validation
     name: Build, test, package debug APK
     # The template repository itself has no Android project, so skip it there.
     if: github.event.repository.is_template != true
