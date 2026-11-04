@@ -5,15 +5,16 @@ Build and test native Android apps on GitHub's cloud runners and download the de
 **Status:** workflows pass actionlint, shellcheck and YAML checks, and the helper scripts were tested against mock projects. **No real Android build has been run yet** (see `tests/workflow-validation.md`). Run the first-build checklist before trusting it.
 
 ## What it does
-1. Checks the repository is a Gradle Android project (clear errors if not).
-2. Sets up Java, the Android SDK and Gradle caching.
-3. Validates the Gradle wrapper, compiles, runs unit tests, builds a debug APK.
-4. Uploads the APK as an Actions artifact (`android-debug-apk-run<N>`).
-5. On failure, writes a classified summary and uploads logs and reports.
+1. Validates the committed Gradle Wrapper JAR and distribution settings on every run, including in this template repository.
+2. Checks the repository is a Gradle Android project (clear errors if not).
+3. Sets up Java, the Android SDK and Gradle caching.
+4. Compiles, runs unit tests, and builds a debug APK.
+5. Uploads the APK as an Actions artifact (`android-debug-apk-run<N>`).
+6. On failure, writes a classified summary and uploads logs and reports.
 
 ## Quick start (phone)
 1. Tap **Use this template** → **Create a new repository** (see `docs/PHONE_WORKFLOW.md`).
-2. Upload your Android project to the repository root (`gradlew`, `gradle/`, `settings.gradle*`, `build.gradle*`, `app/`).
+2. Upload your Android project source to the repository root (`settings.gradle*`, `build.gradle*`, `app/`). The template already supplies the Gradle 8.14.6 wrapper (`gradlew`, `gradlew.bat`, and `gradle/wrapper/`). Keep those wrapper files unless you deliberately regenerate and validate a different Gradle version.
 3. Open **Actions → Android build and test → Run workflow**.
 4. When it finishes, open the run, scroll to **Artifacts**, download, unzip, install.
 
